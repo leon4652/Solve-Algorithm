@@ -7,6 +7,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
+/*
+
+1. id와 닉네임을 매핑할 HashMap 사용
+2. 바뀌는건 닉네임만 바뀌니 고정되는 입퇴장 안내문은 리스트에 따로 저장
+3. HashMap + 입퇴장 안내문으로 출력
+
+*/
+
 public class 오픈채팅방_0322 {
 
     public static void main(String[] args) {
@@ -30,10 +38,10 @@ public class 오픈채팅방_0322 {
             switch(log[0]) {
                 case("Enter"):
                     users.put(log[1], log[2]);
-                    msgs.add(new String[] {log[1], "님이 들어왔습니다.", log[2]});
+                    msgs.add(new String[] {log[1], "님이 들어왔습니다."});
                     break;
                 case("Leave"):
-                    msgs.add(new String[] {log[1], "님이 나갔습니다.", users.get(log[1])});
+                    msgs.add(new String[] {log[1], "님이 나갔습니다."});
                     break;
                 case("Change"):
                     users.put(log[1], log[2]);
