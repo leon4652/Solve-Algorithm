@@ -1,0 +1,51 @@
+package kakao;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.StringTokenizer;
+
+public class 오픈채팅방_0322 {
+
+    public static void main(String[] args) {
+        String[] input = {"Enter uid1234 Muzi", "Enter uid4567 Prodo",
+                "Leave uid1234","Enter uid1234 Prodo","Change uid4567 Ryan"};
+        
+    }
+
+    private static String[] solution(String[] record) {
+        int num = record.length;
+        String[] answer = new String[num];
+
+        Map<String, String> users = new HashMap<>(); //id 저장
+        List<String[]> msgs = new ArrayList<>();    //메시지 담을 리스트
+
+        for (int i = 0; i < num; i++) {
+            String now = record[i]; //현재 String값
+            String[] log = now.split(" ");
+
+            //입력값 저장하기
+            switch(log[0]) {
+                case("Enter"):
+                    users.put(log[1], log[2]);
+                    msgs.add(new String[] {log[1], "님이 들어왔습니다.", log[2]});
+                    break;
+                case("Leave"):
+                    msgs.add(new String[] {log[1], "님이 나갔습니다.", users.get(log[1])});
+                    break;
+                case("Change"):
+                    users.put(log[1], log[2]);
+                    break;
+            }
+        }
+
+        //answer에 결과값 담기
+        for (int j = 0; j < num; j++) 
+            answer[j] = msgs.get(j)[2] + msgs.get(j)[1]; // 출력할 결과 생성
+
+        return answer;
+    }
+
+}
