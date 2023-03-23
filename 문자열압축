@@ -1,0 +1,58 @@
+import java.util.*;
+
+/*
+- 완전탐색 사용
+- 1부터 N(전체 길이/2)까지 단위별로 자른 값들 비교하여 최소값 추출
+- 최소값은 (전체 문자열 길이 - 중복이 발생할 때 해당 값의 범위 + 숫자 자리 차지하는 값)을 통해서 구한다.
+*/
+
+class Solution {
+    public int solution(String s) {
+        int answer = Integer.MAX_VALUE;
+        
+        for (int i = 1; i <= s.length()/2 + 1; i++) answer = Math.min(answer, cut(s, i));
+        
+        return answer;
+    }
+    
+    private static int cut(String input, int cnt) {
+		int L = input.length(); //총 길이
+		
+		String last = ""; //이전 조각 저장용
+		int duplicate = 0; //중복 회수
+		
+		for (int i = 0; i < input.length(); i += cnt) {
+			StringBuilder now = new StringBuilder(); //현재 조각
+			if(i + cnt >= input.length()) {
+				now = new StringBuilder(input.substring(i));
+			}
+			else now = new StringBuilder(input.substring(i, i + cnt));
+			
+			
+			if(now.toString().equals(last)) { //이전 조각과 현재 조각이 같을 경우
+				L -= cnt; //해당 길이만큼 줄어듬
+				duplicate += 1;
+			}
+			else { //아닐 경우 last에 현재 값 저장
+				L += countN(duplicate); //숫자의 자리수만큼 더해줌
+				duplicate = 0;
+        last = now.toString(); //이전 값 갱신
+			}
+            
+            
+		}
+		L += countN(duplicate); //숫자의 자리수만큼 더해줌
+        
+		return L;
+	}
+    
+    private static int countN(int N) {
+		int cnt = 0;
+		while(N > 0) {
+			N /= 10;
+			cnt++;
+		}
+		
+		return cnt;
+	}
+}
