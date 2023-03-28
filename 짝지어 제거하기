@@ -1,0 +1,22 @@
+import java.util.*;
+class Solution
+{
+    public int solution(String s)
+    {
+       Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            boolean flag = false; //TF 판별용 변수
+            char now = s.charAt(i); //현재 판단 문자열
+
+            while (true) {
+                if(stack.isEmpty() || stack.peek() != now) break; //만약 이전 값과 다르다면 벗어남
+                flag = true; //같은 값이 있다 = 값을 빼야 한다 = 지금 값(now)는 넣을 필요가 없다.
+                stack.pop();
+            }
+            if(!flag) stack.push(now);
+        }
+
+        if(stack.isEmpty()) return 1;
+        return 0;
+    }
+}
