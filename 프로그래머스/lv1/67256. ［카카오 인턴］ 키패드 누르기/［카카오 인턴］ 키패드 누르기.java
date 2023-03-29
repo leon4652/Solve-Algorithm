@@ -1,4 +1,10 @@
 class Solution {
+    
+      /*
+        번호와의 거리 = ((손가락 - 누를 번호) % 3) + ((손가락 - 누를 번호) / 3)
+        반복문 사용하여 좌 / 우 / 가운데(조건 판정) 이후 손가락 위치와 출력 갱신
+     */
+    
     public static String solution(int[] ints, String hand) {
         StringBuilder answer = new StringBuilder("");
 
