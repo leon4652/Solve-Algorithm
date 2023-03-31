@@ -68,7 +68,7 @@ public class Main {
 		//완전 탐색으로 치즈 개수 카운팅 및 사라질 치즈 위치 저장
 				for (int i = 0; i < N; i++) {
 					for (int j = 0; j < M; j++) {
-						if(board[i][j] == 1) cheese += 1;
+						//if(board[i][j] == 1) cheese += 1;
 						
 						//사방탐색하여 근처에 외곽(2)이 있을 경우
 						if(nowIsNearByBorder(i, j)) {
