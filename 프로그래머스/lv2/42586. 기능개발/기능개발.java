@@ -28,8 +28,7 @@ class Solution {
         if(proq.isEmpty() || proq.peek() + (day * speedq.peek()) < 100) return cnt;
         else {
             proq.poll(); speedq.poll();
-            cnt++;
-            cnt = cal(day, cnt);
+            cnt = cal(day, ++cnt);
         }
             
         return cnt;
