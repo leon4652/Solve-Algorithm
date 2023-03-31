@@ -61,28 +61,18 @@ public class Main {
 				if(nextBoardCheck[i][j]) {
 					board[i][j] = 2;
 				}
-			} 
+			}
 		}
-		
-		//D
-		//완전 탐색으로 치즈 개수 카운팅 및 사라질 치즈 위치 저장
+
+		//치즈 개수 반영 후 치즈 내부의 공백 '0' 처리
 				for (int i = 0; i < N; i++) {
-					for (int j = 0; j < M; j++) {
-						//if(board[i][j] == 1) cheese += 1;
-						
-						//사방탐색하여 근처에 외곽(2)이 있을 경우
-						if(nowIsNearByBorder(i, j)) {
-							//외곽 근처인데, 해당 값이 치즈 안쪽(0)이었다면, 채우기 실행 
-							if(board[i][j] == 0) {
-								setBoarder(i, j);
-								//if(board[i][j - 1] == 1) nextBoardCheck[i][j - 1] = true; //예외처리
-							}
-							nextBoardCheck[i][j] = true;
-						}
-						else nextBoardCheck[i][j] = false;
+					for (int j = 0; j < M; j++) {		
+		                //외곽 근처인데, 해당 값이 치즈 안쪽(0)이었다면, 채우기 실행 
+						if(nowIsNearByBorder(i, j)) 
+							if(board[i][j] == 0) setBoarder(i, j);
 					}
 				}
-		
+
 		find(cheese, ++time);
 	}
 
