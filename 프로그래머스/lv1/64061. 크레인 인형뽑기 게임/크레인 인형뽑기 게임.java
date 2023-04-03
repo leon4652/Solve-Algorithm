@@ -1,5 +1,8 @@
 import java.util.*;
 
+/*
+ 스택 사용하여 뽑은 인형들 저장 및 제거
+*/
 class Solution {
     public int solution(int[][] board, int[] moves) {
         Stack<Integer> s = new Stack<>();
@@ -7,7 +10,7 @@ class Solution {
         
         for (int i = 0; i < moves.length; i++) {
         	int doll = 0; 			//목표 인형
-        	int col = moves[i] - 1; //뽑을 열
+        	int col = moves[i] - 1; 	//뽑을 열
         	int row = 0; 			//뽑을 행
         	
         	//1. 인형이 있는 행 찾기
