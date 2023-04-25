@@ -1,4 +1,7 @@
-
+/*
+4^6 * 100 = 1638400이므로 완탐 가능
+백트래킹 + 구현 사용
+*/
 class Solution {
     static final int SALE = 4;
 	static int sale[] = {10, 20, 30, 40}; //할인율
